@@ -23,27 +23,51 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     .video-container {
       display: inline-block;
     }
 
+    .video-caption {
+      position: relative;
+      padding: 5px 10px;
+      font-family: Arial, sans-serif;
+      width: auto;
+      height: auto;
+      /* color: black; */
+      font-size: small;
+    }
+
     .video-title {
       position: relative;
-      color: white;
       /* Text color */
-      font-size: 12px;
       /* Font size */
       /* Font weight */
-      background-color: rgba(0, 0, 0, 0.75);
       /* Semi-transparent background */
-      padding: 5px 10px;
+      padding: 5px 10px 25px;
       /* Padding */
       font-family: Arial, sans-serif;
       width: auto;
       height: auto;
     }
 
+    .iframe_overall {
+      height: auto;
+      min-height: 45vh;
+      /* Optionally, ensure the iframe takes up at least the full viewport height */
+      border: none;
+      /* Remove iframe border */
+    }
+
+    .iframe_task {
+      height: auto;
+      min-height: 70vh;
+      /* Optionally, ensure the iframe takes up at least the full viewport height */
+      border: none;
+      /* Remove iframe border */
+    }
 
     .carousel-item {
       cursor: pointer;
@@ -51,7 +75,7 @@
       height: 100%;
       object-fit: cover;
       max-width: 100%;
-      max-height: 80%;
+      max-height: 100%;
     }
 
     .lightbox {
@@ -149,7 +173,7 @@
               <div class="publication-links">
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a href="./vid2robot.pdf" class="external-link button is-normal is-rounded is-dark">
+                  <a href="vid2robot.pdf" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                     </span>
@@ -211,73 +235,555 @@
       </div>
     </div>
   </section>
-
-
-
+  <br> 
   <section class="hero is-light is-small">
     <div class="hero-body">
-      <div class="container">
+      <div class="container has-text-centered">
+        <h3 class="title is-4">Human Prompted Tasks</h3>
+        <p>Task shown by Human in the prompt video (in blue frame) and completed autonomously by Vid2Robot (in green frame). 
+        </p>
+        <br>
         <div id="results-carousel" class="carousel results-carousel">
-          <div class="item item-chair-tp">
-            <video poster="" id="chair-tp" class="carousel-item" autoplay controls muted loop playsinline height="100%">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
               <source
-                src="./static/videos/rollouts/success/with ref/rollout_with_ref_0_human_3p_observe_human_close_middle_drawer-m2rtccmoreframes_Thu Jan 25 11_09_42 2024.mp4"
+                src="./static/videos/main_results/human/rollout_with_ref_5_human_3p_observe_human_move_rxbar_chocolate_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 09_53_56 2024.mp4"
                 type="video/mp4">
             </video>
-            <div class="video-title">Close middle drawer</div>
+            <div class="video-caption">
+              Move rxbar chocolate near coke can
+            </div>
           </div>
-          <div class="item item-shiba">
-            <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
               <source
-                src="./static/videos/rollouts/success/with ref/rollout_with_ref_0_phase4_move_orange_near_blue_chip_bag-m2rtccmoreframes_Thu Jan 25 13_36_05 2024.mp4"
+                src="./static/videos/main_results/human/rollout_with_ref_21_human_3p_observe_human_pick_coke_can_from_bottom_drawer_and_place_on_counter-m2r_tccmoreframes_fc_Wed Jan 31 09_39_56 2024.mp4"
                 type="video/mp4">
             </video>
-            <div class="video-title">Move orange near blue chip bag</div>
+            <div class="video-caption">
+              Pick coke can from bottom drawer and place on counter
+            </div>
           </div>
-          <div class="item item-mask">
-            <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
               <source
-                src="./static/videos/rollouts/success/with ref/rollout_with_ref_25_human_3p_observe_human_open_middle_drawer-m2r_tccmoreframes_fc_Tue Jan 30 10_21_22 2024.mp4"
+                src="./static/videos/main_results/human/rollout_with_ref_11_human_3p_observe_human_move_green_jalapeno_chip_bag_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 13_00_58 2024.mp4"
                 type="video/mp4">
             </video>
-            <div class="video-title">Open middle drawer</div>
+            <div class="video-caption">
+              Move green jalapeno chip bag near coke can
+            </div>
           </div>
-          <div class="item item-coffee">
-            <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
               <source
-                src="./static/videos/rollouts/success/with ref/rollout_with_ref_13_human_3p_observe_human_pick_green_rice_chip_bag-m2r_tccmoreframes_fc_Tue Jan 30 08_46_35 2024.mp4"
+                src="./static/videos/main_results/human/rollout_with_ref_11_human_3p_observe_human_move_green_jalapeno_chip_bag_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 10_57_33 2024.mp4"
                 type="video/mp4">
             </video>
-            <div class="video-title">Pick green rice chip bag</div>
+            <div class="video-caption">
+              Move green jalapeno chip bag near coke can
+            </div>
           </div>
-          <div class="item item-toby">
-            <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
               <source
-                src="./static/videos/rollouts/success/with ref/rollout_with_ref_2_phase4_move_green_jalapeno_chip_bag_near_green_rice_chip_bag-m2rtccmoreframes_Thu Jan 25 13_13_22 2024.mp4"
+                src="./static/videos/main_results/human/rollout_with_ref_13_human_3p_observe_human_pick_green_rice_chip_bag-m2r_tccmoreframes_fc_Tue Jan 30 13_04_09 2024.mp4"
                 type="video/mp4">
             </video>
-            <div class="video-title">Move green jalapeno chip bag near green rice chip bag</div>
+            <div class="video-caption">
+              Pick green rice chip bag
+            </div>
           </div>
-          <div class="item item-fullbody">
-            <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
               <source
-                src="./static/videos/rollouts/success/with ref/rollout_with_ref_8_human_3p_observe_human_move_green_jalapeno_chip_bag_near_coke_can-bcz_human_robot_mix_Tue Jan 30 12_58_14 2024.mp4"
+                src="./static/videos/main_results/human/rollout_with_ref_13_human_3p_observe_human_pick_green_rice_chip_bag-m2r_tccmoreframes_fc_Wed Jan 31 09_11_18 2024.mp4"
                 type="video/mp4">
             </video>
-            <div class="video-title">Move green jalapeno chip bag near coke can</div>
+            <div class="video-caption">
+              Pick green rice chip bag
+            </div>
           </div>
-          <div class="item item-blueshirt">
-            <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
               <source
-                src="./static/videos/rollouts/success/with ref/rollout_with_ref_5_human_3p_observe_human_move_rxbar_chocolate_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 12_40_25 2024.mp4"
+                src="./static/videos/main_results/human/rollout_with_ref_27_human_3p_observe_human_open_middle_drawer-m2r_tccmoreframes_fc_Tue Jan 30 14_11_13 2024.mp4"
                 type="video/mp4">
             </video>
-            <div class="video-title">Move rxbar chocolate near coke can</div>
+            <div class="video-caption">
+              Open middle drawer
+            </div>
           </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_3_human_3p_observe_human_knock_water_bottle_over-m2r_tccmoreframes_fc_Tue Jan 30 10_49_12 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Knock water bottle over
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_15_human_3p_observe_human_pick_green_rice_chip_bag-m2r_tccmoreframes_fc_Tue Jan 30 13_05_55 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick green rice chip bag
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_33_human_3p_observe_human_place_apple_into_top_drawer-m2r_tccmoreframes_fc_Tue Jan 30 15_32_41 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place apple into top drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_25_human_3p_observe_human_open_middle_drawer-m2r_tccmoreframes_fc_Tue Jan 30 15_18_34 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Open middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_21_human_3p_observe_human_pick_coke_can_from_bottom_drawer_and_place_on_counter-m2r_tccmoreframes_fc_Tue Jan 30 13_19_56 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick coke can from bottom drawer and place on counter
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_11_human_3p_observe_human_move_green_jalapeno_chip_bag_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 10_25_07 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move green jalapeno chip bag near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_15_human_3p_observe_human_pick_green_rice_chip_bag-m2r_tccmoreframes_fc_Wed Jan 31 09_14_34 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick green rice chip bag
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_9_human_3p_observe_human_move_green_jalapeno_chip_bag_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 14_16_26 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move green jalapeno chip bag near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_5_human_3p_observe_human_move_rxbar_chocolate_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 09_55_06 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move rxbar chocolate near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_5_human_3p_observe_human_move_rxbar_chocolate_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 12_40_25 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move rxbar chocolate near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_27_human_3p_observe_human_open_middle_drawer-m2r_tccmoreframes_fc_Wed Jan 31 09_58_03 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Open middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_33_human_3p_observe_human_place_apple_into_top_drawer-m2r_tccmoreframes_fc_Wed Jan 31 10_13_56 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place apple into top drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_25_human_3p_observe_human_open_middle_drawer-m2r_tccmoreframes_fc_Tue Jan 30 09_57_12 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Open middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_29_human_3p_observe_human_close_middle_drawer-m2r_tccmoreframes_fc_Tue Jan 30 15_26_16 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Close middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_3_human_3p_observe_human_knock_water_bottle_over-m2r_tccmoreframes_fc_Tue Jan 30 09_08_10 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Knock water bottle over
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/human/rollout_with_ref_19_human_3p_observe_human_place_coke_can_upright-m2r_tccmoreframes_fc_Tue Jan 30 09_26_56 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place coke can upright
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
+  <br>
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h3 class="title is-4">Robot Prompted Tasks</h3>
+        <p>Task shown by Robot via teleoperation in the prompt video (in blue frame) and completed autonomously by Vid2Robot (in green frame). 
+        </p>
+        <br>
+        <div id="results-carousel" class="carousel results-carousel">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_13_phase4_pick_green_rice_chip_bag-m2r_tccmoreframes_fc_Thu Feb  1 10_02_57 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick green rice chip bag
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_23_phase4_pick_coke_can_from_bottom_drawer_and_place_on_counter-m2r_tccmoreframes_fc_Thu Feb  1 10_21_03 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick coke can from bottom drawer and place on counter
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_29_phase4_close_middle_drawer-m2r_tccmoreframes_fc_Thu Feb  1 13_49_31 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Close middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_15_phase4_pick_green_rice_chip_bag-m2r_tccmoreframes_fc_Thu Feb  1 10_33_29 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick green rice chip bag
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_17_phase4_place_coke_can_upright-m2r_tccmoreframes_fc_Thu Feb  1 10_08_00 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place coke can upright
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_0_phase4_pick_pretzel_chip_bag-m2rtccmoreframes_Mon Jan 29 15_11_09 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick pretzel chip bag
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_29_phase4_close_middle_drawer-m2r_tccmoreframes_fc_Thu Feb  1 10_29_41 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Close middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_2_phase4_move_redbull_can_near_coke_can-m2rtccmoreframes_Mon Jan 29 11_45_23 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move redbull can near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_0_phase4_pick_green_rice_chip_bag-m2r_tccmoreframes_fc_Sun Jan 28 18_50_00 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick green rice chip bag
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_25_phase4_open_middle_drawer-m2r_tccmoreframes_fc_Thu Feb  1 10_24_00 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Open middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_35_phase4_place_apple_into_top_drawer-m2r_tccmoreframes_fc_Thu Feb  1 10_48_34 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place apple into top drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_3_phase4_knock_water_bottle_over-m2r_tccmoreframes_fc_Wed Jan 31 15_13_01 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Knock water bottle over
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_0_phase4_pick_brown_chip_bag_from_middle_drawer_and_place_on_counter-m2r_tccmoreframes_fc_Sun Jan 28 19_23_23 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick brown chip bag from middle drawer and place on counter
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_0_phase4_pick_original_pepper_can-m2rtccmoreframes_Mon Jan 29 14_48_12 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick original pepper can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_9_phase4_move_green_jalapeno_chip_bag_near_coke_can-m2r_tccmoreframes_fc_Thu Feb  1 09_58_03 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move green jalapeno chip bag near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_2_phase4_pick_green_jalapeno_chip_bag_from_middle_drawer_and_place_on_counter-m2rtccmoreframes_Mon Jan 29 14_39_13 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick green jalapeno chip bag from middle drawer and place on counter
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_0_phase4_place_apple_into_top_drawer-m2r_tccmoreframes_fc_Sun Jan 28 20_07_59 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place apple into top drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_1_phase4_close_middle_drawer-m2r_tccmoreframes_fc_Sun Jan 28 19_53_30 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Close middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_33_phase4_place_apple_into_top_drawer-m2r_tccmoreframes_fc_Thu Feb  1 14_01_53 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place apple into top drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_31_phase4_close_middle_drawer-m2r_tccmoreframes_fc_Thu Feb  1 15_12_55 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Close middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_0_phase4_pick_7up_can_from_bottom_drawer_and_place_on_counter-m2rtccmoreframes_Mon Jan 29 12_48_29 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick 7up can from bottom drawer and place on counter
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_5_phase4_move_rxbar_chocolate_near_coke_can-m2r_tccmoreframes_fc_Wed Jan 31 15_15_39 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move rxbar chocolate near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_11_phase4_move_green_jalapeno_chip_bag_near_coke_can-m2r_tccmoreframes_fc_Thu Feb  1 10_19_33 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move green jalapeno chip bag near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/main_results/robot/rollout_with_ref_3_phase4_knock_water_bottle_over-m2r_tccmoreframes_fc_Thu Feb  1 09_47_17 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Knock water bottle over
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <br>
+
 
   <section class="section">
     <div class="container is-max-desktop">
@@ -334,22 +840,222 @@
               Our policy takes as input the prompt video and the current robot state and outputs robot actions. It
               consists of four modules:
               (1) prompt video encoder (2) robot state encoder, (3) state-prompt encoder, and (4) robot action decoder.
+              <br>
               Our model takes as input frames of the prompt video and the robot's current observations,
-              encodes those into prompt video and robot state token embeddings,
-              which are then processed through into state-prompt encoder
-              and decoded into a robot action for the current timestep.
+              encodes those into prompt video and robot state token embeddings.
+              The prompt encoder consists of a per-frame Image encoder (ViT) followed by a Perceiver Resampler.
+              Similarly, for the state encoder.
+              <br>
+              The state-prompt encoder is a cross-attention transformer that fuses the prompt video and the robot state.
+              <br>
+              The robot action decoder is a transformer that decodes the fused state-prompt representation into robot
+              actions.
+            </p>
+          </div>
+          <div class="content has-text-centered">
+            <img src="./static/images/new_training.jpg" alt="Training losses" width="100%">
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              We show all the losses Vid2Robot is trained with and how each loss is connected to its different modules.
+              Along with (1) the main action prediction loss,
+              we apply three auxiliary losses: (2) temporal video alignment loss, (3) a contrastive loss between the
+              prompt and robot video performing the same task, and (4) a contrastive loss between a prompt/robot video
+              with the language embedding.
             </p>
           </div>
         </div>
+        <!--/ Paper video. -->
       </div>
-      <!--/ Paper video. -->
-    </div>
   </section>
 
   <br>
   <hr><br>
 
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- Task based Success. -->
 
+          <div class="content has-text-centered">
+            <h2 class="title is-3">Task based Success</h2>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              We demonstrate the success of <span class="dnerf">Vid2Robot</span> in performing tasks from prompt videos
+              with Robot and Human
+              performing the tasks in comparison to <a href="https://arxiv.org/abs/2202.02005">BC-Z</a> (Jang et al.
+              2020).
+              For a fair comparison, we train the BC-Z model with the same training data used to train the Vid2Robot
+              model. BC-Z doesn't have a terminate action, so we run its rollouts for a fixed maximum number of steps.
+              <br>
+              While the tasks shown in Prompt Videos are as part of training, but the videos themselves are unseen for
+              the
+              models.
+              The current state of the robot is also unseen due to random object placements, lighting and online changes
+              as per the policy rollout.
+              In this evaluation, we investigate what each model's ability is to infer the task specification from
+              prompt
+              video as well as the current observed state of the robot in unseen settings.
+            </p>
+          </div>
+          <div class="content has-text-centered">
+            <iframe class="iframe_overall" src="main_overall.html" width="85%"></iframe>
+          </div>
+          <div class="context has-text-justified">
+            <p>
+              The overall success rate of our model <span class="dnerf">Vid2Robot</span> outperforms BC-Z for Human
+              prompt
+              videos by 23%, and is comparable for Robot prompt videos.
+              Note that there is an order of magnitude more training samples for robot trajectories than human videos in
+              our training mixture. Hence, there isn't a significant gap in performance for robot prompt videos.
+              For human prompt videos, our model outperforms BC-Z in most tasks, showing that <span
+                class="dnerf">Vid2Robot</span> captures the task semantics from prompt videos better than the baseline.
+            </p>
+          </div>
+          <div class="content has-text-centered">
+            <iframe class="iframe_task" src="main_task.html" width="100%"></iframe>
+          </div>
+          <div class="context has-text-justified">
+            <p>
+              Our model outperforms in tasks like picking from drawer and placing on the counter, and opening/closing
+              drawer tasks by a large margin.
+              <br>
+              The most challenging task is placing upright and knocking over tasks, where the model has
+              to understand the orientation of the object and the action to be performed.
+            </p>
+          </div>
+          <!--/ Task based Success. -->
+        </div>
+      </div>
+  </section>
+
+  <!--/ Task based Success. -->
+  <br>
+  <hr><br>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="column is-centered">
+        <!-- Cross Object Motion Transfer. -->
+        <div class="content has-text-centered">
+          <h2 class="title is-3">Cross Object Motion Transfer</h2>
+        </div>
+        <div class="hero-body">
+          <video id="motion_transfer" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/motion_transfer.m4v" type="video/mp4">
+          </video>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Vid2Robot</span>, you can enable verb transfer to other objects. Here are some
+            examples of verbs like
+            <em>place upright</em>, <em>pick from drawer</em>, <em>place into the drawer</em> and more.
+            <!-- Such transfer would not have been possible without    -->
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <iframe class="iframe_overall" src="motion_transfer_overall.html" width="85%"></iframe>
+          <iframe class="iframe_task" src="motion_transfer_task.html" width="100%"></iframe>
+
+          <section class="hero is-light is-small">
+            <div class="hero-body">
+              <div class="container has-text-centered">
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source
+                      src="./static/videos/motion_transfer/pick_coke_can_from_bottom_drawer_and_place_on_counter/rollout_with_ref_41_phase4_pick_coke_can_from_bottom_drawer_and_place_on_counter-m2r_tccmoreframes_fc_Wed Jan 31 09_35_37 2024.mp4"
+                      type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Video shows <em>pick <strong>Coke can</strong> from bottom drawer
+                      and place it on the counter</em>.
+                    <br>
+                    Robot sees the <em><strong>Chips bag </strong></em> in its
+                    view, <em>"picks it up and places it on the counter"</em>.
+                  </div>
+                </div>
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source
+                      src="./static/videos/motion_transfer/knock_water_bottle_over/success_rollout_with_ref_3_phase4_knock_water_bottle_over-m2r_tccmoreframes_fc_Wed Jan 31 08_17_10 2024.mp4"
+                      type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Video shows <em> Knock over <strong>water bottle</strong></em>.
+                    <br>
+                    Robot sees the <em><strong>Green Can</strong></em> in its view and <em>"knocks it
+                      over"</em>.
+                  </div>
+                </div>
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source
+                      src="./static/videos/motion_transfer/place_apple_into_top_drawer/apple_in_drawer-banana_in_drawer.mp4"
+                      type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Videos show
+                    <em>Place <strong>Apple</strong> in the top drawer</em>.
+                    <br>
+                    Robot sees the <em><strong>Banana</strong></em> in its view and <em>"places it in the top
+                      drawer"</em>.
+                  </div>
+                </div>
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source src="./static/videos/motion_transfer/close_drawer.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Video shows
+                    <em>Close <strong>Middle</strong> drawer</em>.
+                    <br>
+                    Robot sees the <em><strong>Top</strong></em> drawer open in its view and <em>"closes the
+                      drawer"</em>.
+                  </div>
+                </div>
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source
+                      src="./static/videos/motion_transfer/pick_coke_can_from_bottom_drawer_and_place_on_counter/rollout_with_ref_45_phase4_pick_coke_can_from_bottom_drawer_and_place_on_counter-m2r_tccmoreframes_fc.mp4"
+                      type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Video shows
+                    <em>Pick <strong>Coke Can</strong> from bottom drawer and place it on the counter</em>.
+                    <br>
+                    Robot sees the <em><strong>Soft Pink Piggy Toy</strong></em> in the drawer open in its view and
+                    <em>"picks and places it on the counter"</em>.
+                  </div>
+                </div>
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source
+                      src="./static/videos/motion_transfer/place_coke_can_upright/rollout_with_ref_31_phase4_place_coke_can_upright-m2r_tccmoreframes_fc_Wed Jan 31 09_12_48 2024.mp4"
+                      type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Video shows
+                    <em>Place <strong>Coke Can</strong> upright</em>.
+                    <br>
+                    Robot sees the <em><strong>Banana</strong></em> in its view and attempts to <em>"place it
+                      upright"</em>.
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--/ Cross Object Motion Transfer. -->
+  <br>
+  <hr><br>
   <!-- Long Task Composition. -->
   <section class="section">
     <div class="container is-max-desktop">
@@ -358,6 +1064,11 @@
         <div class="content has-text-centered">
           <h2 class="title is-3">Long Horizon Task Composition</h2>
         </div>
+        <div class="hero-body">
+          <video id="long_horizon" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/long_horizon.m4v" type="video/mp4">
+          </video>
+        </div>
         <div class="content has-text-justified">
           <p>
             We can solve long horizon task compositions by combining prompt videos. Here we showcase long horizon
@@ -365,63 +1076,57 @@
           </p>
           <section class="hero is-light is-small">
             <div class="hero-body">
-              <div class="container">
-                <div id="results-carousel" class="carousel results-carousel">
-                  <div class="item">
-                    <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
-                      height="100%">
-                      <source src="./static/videos/long_horizon_tasks/open_place_close.mov"
-                        type="video/mp4">
-                    </video>
-                    <div class="video-title">Prompt Videos show
-                      (1)<em> Open the drawer</em>, (2)<em>Place the Coke can in it</em> and (3) Close the drawer.
-                      Robot sees the <em>Coke can, Chips bag and Rxbar</em> in its view and first moves the chips bag
-                      close to
-                      the coke can
-                      and then moves the rxbar near the coke can.
-                    </div>
+              <div class="container has-text-centered">
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source src="./static/videos/long_horizon_tasks/open_place_close.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Videos show
+                    (1)<em> Open the drawer</em>, (2)<em>Place the Coke can in it</em> and (3) Close the drawer.
+                    Robot <em>opens the top drawer</em>, place the <em>Coke Can</em> in its view in the drawer and then
+                    <em>closes it</em>.
                   </div>
-                  <div class="item">
-                    <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
-                      height="100%">
-                      <source
-                        src="./static/videos/long_horizon_tasks/move_chips_near_can_then_move_rxbar_near_can.mp4"
-                        type="video/mp4">
-                    </video>
-                    <div class="video-title">Prompt Videos show
-                      (1)<em> Move Chips near Coke can</em> and (2)<em>Move Rxbar near Coke Can</em>.
-                      Robot sees the <em>Coke can, Chips bag and Rxbar</em> in its view and first moves the chips bag
-                      close to
-                      the coke can
-                      and then moves the rxbar near the coke can.
-                    </div>
+                </div>
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source src="./static/videos/long_horizon_tasks/move_chips_near_can_then_move_rxbar_near_can.mp4"
+                      type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Videos show
+                    (1)<em> Move Chips near Coke can</em> and (2)<em>Move Rxbar near Coke Can</em>.
+                    <br>
+                    Robot sees the <em>Coke can, Chips bag and Rxbar</em> in its view and first moves the chips bag
+                    and then the rxbar near the coke can.
                   </div>
-                  <div class="item">
-                    <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
-                      height="100%">
-                      <source src="./static/videos/long_horizon_tasks/knock_then_place_upright.mp4"
-                        type="video/mp4">
-                    </video>
-                    <div class="video-title">Prompt Videos show
-                      (1)<em> Knock pepsi can</em> and (2)<em> Place coke can
-                        upright</em>.
-                      Robot sees the <em>Green Soda can</em> in its view and executes knocking it over and then placing
-                      it
-                      upright.
-                    </div>
+                </div>
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source src="./static/videos/long_horizon_tasks/knock_then_place_upright.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Videos show
+                    (1)<em> Knock pepsi can</em> and (2)<em> Place coke can
+                      upright</em>.
+                    <br>
+                    Robot sees the <em>Green Soda can</em> in its view and executes knocking it over and then placing
+                    it
+                    upright.
                   </div>
-                  <div class="item">
-                    <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
-                      height="100%">
-                      <source src="./static/videos/long_horizon_tasks/place_upright_then _knock.mp4"
-                        type="video/mp4">
-                    </video>
-                    <div class="video-title">Prompt Videos show
-                      (1)<em> Place Coke can upright</em> and (2)<em> Knock Pepsi can over</em>.
-                      Robot sees the <em>Green Soda can</em> in its view and executes placing it
-                      upright and then knocking it over.
-                    </div>
+                </div>
+                <div class="item">
+                  <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source src="./static/videos/long_horizon_tasks/place_upright_then_knock.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-title">Prompt Videos show
+                    (1)<em> Place Coke can upright</em> and (2)<em> Knock Pepsi can over</em>.
+                    <br>
+                    Robot sees the <em>Green Soda can</em> in its view and executes placing it
+                    upright and then knocking it over.
                   </div>
+
                 </div>
               </div>
             </div>
@@ -432,16 +1137,18 @@
 
     </div>
   </section>
-  
+
   <br>
   <hr><br>
+
+
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{jain2024vid2robot,
+      <pre><code>@misc{jain2024<span class="dnerf">Vid2Robot</span>,
   author    = {Jain, Vidhi and Attarian, Maria and Joshi, Nikhil J and Wahid, Ayzaan and Driess, Danny and Vuong, Quan and Sanketi, Pannag R and Sermanet, Pierre and Welker, Stefan and Chan, Christine and Gilitschenski, Igor and Bisk, Yonatan and Dwibedi, Debidatta},
-  title     = {Vid2Robot: End-to-end Video-conditioned Policy Learning with Cross-Attention Transformers},
+  title     = {<span class="dnerf">Vid2Robot</span>: End-to-end Video-conditioned Policy Learning with Cross-Attention Transformers},
   year      = {2024},
 }</code></pre>
     </div>
