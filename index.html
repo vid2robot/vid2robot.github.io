@@ -822,38 +822,22 @@
         </div>
       </div>
       <!--/ Abstract. -->
-      <br>
-      <hr><br>
+      <hr>
       <!-- Paper video. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Architecture</h2>
-          <div class="publication-video">
-            <!-- <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-            <video id="architecture" autoplay muted loop playsinline height="80%">
-              <source src="./static/videos/arch.mp4" type="video/mp4">
-            </video>
-          </div>
           <div class="content has-text-justified">
             <p>
               Our policy takes as input the prompt video and the current robot state and outputs robot actions. It
               consists of four modules:
               (1) prompt video encoder (2) robot state encoder, (3) state-prompt encoder, and (4) robot action decoder.
-              <br>
-              Our model takes as input frames of the prompt video and the robot's current observations,
-              encodes those into prompt video and robot state token embeddings.
-              The prompt encoder consists of a per-frame Image encoder (ViT) followed by a Perceiver Resampler.
-              Similarly, for the state encoder.
-              <br>
-              The state-prompt encoder is a cross-attention transformer that fuses the prompt video and the robot state.
-              <br>
-              The robot action decoder is a transformer that decodes the fused state-prompt representation into robot
-              actions.
             </p>
           </div>
-          <div class="content has-text-centered">
-            <img src="./static/images/new_training.jpg" alt="Training losses" width="100%">
+          <div class="publication-video">
+            <video id="architecture" autoplay controls muted loop playsinline height="80%">
+              <source src="./static/videos/arch.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="content has-text-justified">
             <p>
@@ -864,88 +848,20 @@
               with the language embedding.
             </p>
           </div>
+          <div class="content has-text-centered">
+            <img src="./static/images/new_training.jpg" alt="Training losses" width="100%">
+          </div>
         </div>
         <!--/ Paper video. -->
       </div>
   </section>
-
-  <br>
-  <hr><br>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Abstract. -->
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <!-- Task based Success. -->
-
-          <div class="content has-text-centered">
-            <h2 class="title is-3">Task based Success</h2>
-          </div>
-          <div class="content has-text-justified">
-            <p>
-              We demonstrate the success of <span class="dnerf">Vid2Robot</span> in performing tasks from prompt videos
-              with Robot and Human
-              performing the tasks in comparison to <a href="https://arxiv.org/abs/2202.02005">BC-Z</a> (Jang et al.
-              2020).
-              For a fair comparison, we train the BC-Z model with the same training data used to train the Vid2Robot
-              model. BC-Z doesn't have a terminate action, so we run its rollouts for a fixed maximum number of steps.
-              <br>
-              While the tasks shown in Prompt Videos are as part of training, but the videos themselves are unseen for
-              the
-              models.
-              The current state of the robot is also unseen due to random object placements, lighting and online changes
-              as per the policy rollout.
-              In this evaluation, we investigate what each model's ability is to infer the task specification from
-              prompt
-              video as well as the current observed state of the robot in unseen settings.
-            </p>
-          </div>
-          <div class="content has-text-centered">
-            <iframe class="iframe_overall" src="main_overall.html" width="85%"></iframe>
-          </div>
-          <div class="context has-text-justified">
-            <p>
-              The overall success rate of our model <span class="dnerf">Vid2Robot</span> outperforms BC-Z for Human
-              prompt
-              videos by 23%, and is comparable for Robot prompt videos.
-              Note that there is an order of magnitude more training samples for robot trajectories than human videos in
-              our training mixture. Hence, there isn't a significant gap in performance for robot prompt videos.
-              For human prompt videos, our model outperforms BC-Z in most tasks, showing that <span
-                class="dnerf">Vid2Robot</span> captures the task semantics from prompt videos better than the baseline.
-            </p>
-          </div>
-          <div class="content has-text-centered">
-            <iframe class="iframe_task" src="main_task.html" width="100%"></iframe>
-          </div>
-          <div class="context has-text-justified">
-            <p>
-              Our model outperforms in tasks like picking from drawer and placing on the counter, and opening/closing
-              drawer tasks by a large margin.
-              <br>
-              The most challenging task is placing upright and knocking over tasks, where the model has
-              to understand the orientation of the object and the action to be performed.
-            </p>
-          </div>
-          <!--/ Task based Success. -->
-        </div>
-      </div>
-  </section>
-
-  <!--/ Task based Success. -->
-  <br>
-  <hr><br>
+  <hr>
   <section class="section">
     <div class="container is-max-desktop">
       <div class="column is-centered">
         <!-- Cross Object Motion Transfer. -->
         <div class="content has-text-centered">
           <h2 class="title is-3">Cross Object Motion Transfer</h2>
-        </div>
-        <div class="hero-body">
-          <video id="motion_transfer" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/motion_transfer.mp4" type="video/mp4">
-          </video>
         </div>
         <div class="content has-text-justified">
           <p>
@@ -955,9 +871,14 @@
             <!-- Such transfer would not have been possible without    -->
           </p>
         </div>
+        <div class="hero-body">
+          <video id="motion_transfer" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/motion_transfer.mp4" type="video/mp4">
+          </video>
+        </div>
         <div class="content has-text-centered">
-          <iframe class="iframe_overall" src="motion_transfer_overall.html" width="85%"></iframe>
-          <iframe class="iframe_task" src="motion_transfer_task.html" width="100%"></iframe>
+          <!-- <iframe class="iframe_overall" src="motion_transfer_overall.html" width="85%"></iframe>
+          <iframe class="iframe_task" src="motion_transfer_task.html" width="100%"></iframe> -->
 
           <section class="hero is-light is-small">
             <div class="hero-body">
@@ -1054,26 +975,24 @@
   </section>
 
   <!--/ Cross Object Motion Transfer. -->
-  <br>
-  <hr><br>
+  <hr>
   <!-- Long Task Composition. -->
   <section class="section">
     <div class="container is-max-desktop">
-
       <div class="column is-centered">
         <div class="content has-text-centered">
           <h2 class="title is-3">Long Horizon Task Composition</h2>
-        </div>
-        <div class="hero-body">
-          <video id="long_horizon" autoplay muted controls loop playsinline height="100%">
-            <source src="./static/videos/long_horizon.mp4" type="video/mp4">
-          </video>
         </div>
         <div class="content has-text-justified">
           <p>
             We can solve long horizon task compositions by combining prompt videos. Here we showcase long horizon
             transfer to:
           </p>
+          <div class="hero-body">
+            <video id="long_horizon" autoplay muted controls loop playsinline height="100%">
+              <source src="./static/videos/long_horizon.mp4" type="video/mp4">
+            </video>
+          </div>
           <section class="hero is-light is-small">
             <div class="hero-body">
               <div class="container has-text-centered">
@@ -1083,9 +1002,9 @@
                     <source src="./static/videos/long_horizon_tasks/open_place_close.mp4" type="video/mp4">
                   </video>
                   <div class="video-title">Prompt Videos show
-                    (1)<em> Open the drawer</em>, (2)<em>Place the Coke can in it</em> and (3) Close the drawer.
-                    Robot <em>opens the top drawer</em>, place the <em>Coke Can</em> in its view in the drawer and then
-                    <em>closes it</em>.
+                    (1)<em> Open the <strong>top</strong> drawer</em>, (2) <em>Place the <strong>Rxbar</strong> in it</em> and (3) <em>Close the <strong>middle</strong> drawer</em>.
+                    Robot <em>opens the <strong>top</strong> drawer</em>, place the <em><strong>Coke Can</strong></em> in its view in the drawer and then
+                    <em>closes the <strong>top</strong> drawer</em>.
                   </div>
                 </div>
                 <div class="item">
@@ -1095,10 +1014,10 @@
                       type="video/mp4">
                   </video>
                   <div class="video-title">Prompt Videos show
-                    (1)<em> Move Chips near Coke can</em> and (2)<em>Move Rxbar near Coke Can</em>.
+                    (1)<em> Move <strong>Chips</strong> near Coke Can</em> and (2)<em>Move <strong>Rxbar</strong> near Coke Can</em>.
                     <br>
-                    Robot sees the <em>Coke can, Chips bag and Rxbar</em> in its view and first moves the chips bag
-                    and then the rxbar near the coke can.
+                    Robot sees the <em>Coke Can, Chips bag and Rxbar</em> in its view and first moves the <em><strong>Chips bag</strong></em>
+                    and then the <em><strong>Rxbar</strong></em> near the coke can.
                   </div>
                 </div>
                 <div class="item">
@@ -1107,10 +1026,10 @@
                     <source src="./static/videos/long_horizon_tasks/knock_then_place_upright.mp4" type="video/mp4">
                   </video>
                   <div class="video-title">Prompt Videos show
-                    (1)<em> Knock pepsi can</em> and (2)<em> Place coke can
+                    (1)<em> Knock <strong>Pepsi Can</strong></em> and (2)<em> Place <strong>Coke Can</strong>
                       upright</em>.
                     <br>
-                    Robot sees the <em>Green Soda can</em> in its view and executes knocking it over and then placing
+                    Robot sees the <em><strong>Green Soda Can</strong></em> in its view and executes knocking it over and then placing
                     it
                     upright.
                   </div>
@@ -1121,9 +1040,9 @@
                     <source src="./static/videos/long_horizon_tasks/place_upright_then_knock.mp4" type="video/mp4">
                   </video>
                   <div class="video-title">Prompt Videos show
-                    (1)<em> Place Coke can upright</em> and (2)<em> Knock Pepsi can over</em>.
+                    (1)<em> Place <strong>Coke Can</strong> upright</em> and (2)<em> Knock <strong>Pepsi Can</strong> over</em>.
                     <br>
-                    Robot sees the <em>Green Soda can</em> in its view and executes placing it
+                    Robot sees the <em><strong>Green Soda Can</strong></em> in its view and executes placing it
                     upright and then knocking it over.
                   </div>
 
@@ -1138,26 +1057,31 @@
     </div>
   </section>
 
-  <br>
-  <hr><br>
-
-
-
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{jain2024<span class="dnerf">Vid2Robot</span>,
+      <h5 class="title is-5">Acknowledgements</h5>
+      <p class="has-text-justified">
+        We would like to thank the following people for their contributions to this work: Vidhi Jain, Maria Attarian,
+        Nikhil J Joshi, Ayzaan Wahid, Danny Driess, Quan Vuong, Pannag R Sanketi, Pierre Sermanet, Stefan Welker,
+        Christine Chan, Igor Gilitschenski, Yonatan Bisk, and Debidatta Dwibedi.
+      </p>
+      <h5 class="title is-5">BibTeX</h5>
+      <pre><code>@misc{jain2024vid2robot,
   author    = {Jain, Vidhi and Attarian, Maria and Joshi, Nikhil J and Wahid, Ayzaan and Driess, Danny and Vuong, Quan and Sanketi, Pannag R and Sermanet, Pierre and Welker, Stefan and Chan, Christine and Gilitschenski, Igor and Bisk, Yonatan and Dwibedi, Debidatta},
-  title     = {<span class="dnerf">Vid2Robot</span>: End-to-end Video-conditioned Policy Learning with Cross-Attention Transformers},
+  title     = {Vid2Robot: End-to-end Video-conditioned Policy Learning with Cross-Attention Transformers},
   year      = {2024},
 }</code></pre>
     </div>
   </section>
+
   <footer>
     <div class="container is-max-desktop">
       <div class="columns is-centered">
-        <div class="column">
-          This template was inspired from the <a href="nerfies.github.io">here</a>.
+        <div class="column is-four-fifths">
+          <p class="has-text-centered">
+            For any questions, contact <a href="mailto:vidhij@andrew.cmu.edu">Vidhi Jain</a> and <a href="mailto:debidatta@google.com">Debidatta Dwibedi</a>.
+          This template was inspired from <a href="nerfies.github.io">here</a>.
+          </p>
         </div>
       </div>
     </div>
