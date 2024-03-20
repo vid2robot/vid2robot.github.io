@@ -181,14 +181,14 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://arxiv.org/abs/2403.12943" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
                     <span>arXiv</span>
                   </a>
                 </span>
-                <!-- Video Link. -->
+                <!-- Video Link.
                 <span class="link-block">
                   <a href="" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -196,24 +196,24 @@
                     </span>
                     <span>Video</span>
                   </a>
-                </span>
+                </span> -->
                 <!-- Code Link. -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
                     <span>Code</span>
                   </a>
-                </span>
+                </span> -->
                 <!-- Dataset Link. -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="far fa-images"></i>
                     </span>
                     <span>Data</span>
-                  </a>
+                  </a> -->
               </div>
 
             </div>
@@ -235,12 +235,13 @@
       </div>
     </div>
   </section>
-  <br> 
+  <br>
   <section class="hero is-light is-small">
     <div class="hero-body">
       <div class="container has-text-centered">
         <h3 class="title is-4">Human Prompted Tasks</h3>
-        <p>Task shown by Human in the prompt video (in blue frame) and completed autonomously by Vid2Robot (in green frame). 
+        <p>Task shown by Human in the prompt video (in blue frame) and completed autonomously by Vid2Robot (in green
+          frame).
         </p>
         <br>
         <div id="results-carousel" class="carousel results-carousel">
@@ -508,7 +509,8 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <h3 class="title is-4">Robot Prompted Tasks</h3>
-        <p>Task shown by Robot via teleoperation in the prompt video (in blue frame) and completed autonomously by Vid2Robot (in green frame). 
+        <p>Task shown by Robot via teleoperation in the prompt video (in blue frame) and completed autonomously by
+          Vid2Robot (in green frame).
         </p>
         <br>
         <div id="results-carousel" class="carousel results-carousel">
@@ -822,38 +824,6 @@
         </div>
       </div>
       <!--/ Abstract. -->
-      <hr>
-      <!-- Paper video. -->
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Architecture</h2>
-          <div class="content has-text-justified">
-            <p>
-              Our policy takes as input the prompt video and the current robot state and outputs robot actions. It
-              consists of four modules:
-              (1) prompt video encoder (2) robot state encoder, (3) state-prompt encoder, and (4) robot action decoder.
-            </p>
-          </div>
-          <div class="publication-video">
-            <video id="architecture" autoplay controls muted loop playsinline height="80%">
-              <source src="./static/videos/arch.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="content has-text-justified">
-            <p>
-              We show all the losses Vid2Robot is trained with and how each loss is connected to its different modules.
-              Along with (1) the main action prediction loss,
-              we apply three auxiliary losses: (2) temporal video alignment loss, (3) a contrastive loss between the
-              prompt and robot video performing the same task, and (4) a contrastive loss between a prompt/robot video
-              with the language embedding.
-            </p>
-          </div>
-          <div class="content has-text-centered">
-            <img src="./static/images/new_training.jpg" alt="Training losses" width="100%">
-          </div>
-        </div>
-        <!--/ Paper video. -->
-      </div>
   </section>
   <hr>
   <section class="section">
@@ -973,7 +943,6 @@
       </div>
     </div>
   </section>
-
   <!--/ Cross Object Motion Transfer. -->
   <hr>
   <!-- Long Task Composition. -->
@@ -986,7 +955,8 @@
         <div class="content has-text-justified">
           <p>
             We can solve long horizon task compositions by combining prompt videos. Here we showcase long horizon
-            transfer to:
+            task compositions on <em>open, place and close drawers</em>, <em>move object close to another object
+              sequentially</em>, <em>knocking and placing upright</em>:
           </p>
           <div class="hero-body">
             <video id="long_horizon" autoplay muted controls loop playsinline height="100%">
@@ -1002,8 +972,10 @@
                     <source src="./static/videos/long_horizon_tasks/open_place_close.mp4" type="video/mp4">
                   </video>
                   <div class="video-title">Prompt Videos show
-                    (1)<em> Open the <strong>top</strong> drawer</em>, (2) <em>Place the <strong>Rxbar</strong> in it</em> and (3) <em>Close the <strong>middle</strong> drawer</em>.
-                    Robot <em>opens the <strong>top</strong> drawer</em>, place the <em><strong>Coke Can</strong></em> in its view in the drawer and then
+                    (1)<em> Open the <strong>top</strong> drawer</em>, (2) <em>Place the <strong>Rxbar</strong> in
+                      it</em> and (3) <em>Close the <strong>middle</strong> drawer</em>.
+                    Robot <em>opens the <strong>top</strong> drawer</em>, place the <em><strong>Coke Can</strong></em>
+                    in its view in the drawer and then
                     <em>closes the <strong>top</strong> drawer</em>.
                   </div>
                 </div>
@@ -1014,9 +986,11 @@
                       type="video/mp4">
                   </video>
                   <div class="video-title">Prompt Videos show
-                    (1)<em> Move <strong>Chips</strong> near Coke Can</em> and (2)<em>Move <strong>Rxbar</strong> near Coke Can</em>.
+                    (1)<em> Move <strong>Chips</strong> near Coke Can</em> and (2)<em>Move <strong>Rxbar</strong> near
+                      Coke Can</em>.
                     <br>
-                    Robot sees the <em>Coke Can, Chips bag and Rxbar</em> in its view and first moves the <em><strong>Chips bag</strong></em>
+                    Robot sees the <em>Coke Can, Chips bag and Rxbar</em> in its view and first moves the
+                    <em><strong>Chips bag</strong></em>
                     and then the <em><strong>Rxbar</strong></em> near the coke can.
                   </div>
                 </div>
@@ -1029,7 +1003,8 @@
                     (1)<em> Knock <strong>Pepsi Can</strong></em> and (2)<em> Place <strong>Coke Can</strong>
                       upright</em>.
                     <br>
-                    Robot sees the <em><strong>Green Soda Can</strong></em> in its view and executes knocking it over and then placing
+                    Robot sees the <em><strong>Green Soda Can</strong></em> in its view and executes knocking it over
+                    and then placing
                     it
                     upright.
                   </div>
@@ -1040,7 +1015,8 @@
                     <source src="./static/videos/long_horizon_tasks/place_upright_then_knock.mp4" type="video/mp4">
                   </video>
                   <div class="video-title">Prompt Videos show
-                    (1)<em> Place <strong>Coke Can</strong> upright</em> and (2)<em> Knock <strong>Pepsi Can</strong> over</em>.
+                    (1)<em> Place <strong>Coke Can</strong> upright</em> and (2)<em> Knock <strong>Pepsi Can</strong>
+                      over</em>.
                     <br>
                     Robot sees the <em><strong>Green Soda Can</strong></em> in its view and executes placing it
                     upright and then knocking it over.
@@ -1057,14 +1033,312 @@
     </div>
   </section>
 
+  <hr>
+  <!-- Paper video. -->
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Architecture</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our policy takes as input the prompt video and the current robot state and outputs robot actions. It
+            consists of four modules:
+            (1) prompt video encoder (2) robot state encoder, (3) state-prompt encoder, and (4) robot action decoder.
+          </p>
+        </div>
+        <div class="publication-video">
+          <video id="architecture" autoplay controls muted loop playsinline height="80%">
+            <source src="./static/videos/arch.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            We show all the losses Vid2Robot is trained with and how each loss is connected to its different modules.
+            Along with (1) the main action prediction loss,
+            we apply three auxiliary losses: (2) temporal video alignment loss, (3) a contrastive loss between the
+            prompt and robot video performing the same task, and (4) a contrastive loss between a prompt/robot video
+            with the language embedding.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/new_training.jpg" alt="Training losses" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container is-max-desktop">
+    <!--/ Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset</h2>
+        <div class="content has-text-justified">
+          <p>
+            To train a video-conditioned robot policy we need a datasetof pairs: prompt videos and robot trajectories
+            performing thesame task. In this work, we explore prompt videos where thetask is performed by both humans
+            and robots. To create thisdataset, we rely on three classes of data:
+            <br>
+            <strong>Robot-Robot</strong>: We pair existing robot-robot videos of the same task.
+            <br>
+            <strong>Hindsight Human-Robot</strong>: Here we use the task instruc-tions from the robot trajectories
+            dataset and ask one tofive human participants to perform the task and recorda demonstration video from the
+            robot’s perspective/view.
+            <br>
+            <strong>Co-located Human-Robot</strong>: In this case, a human and arobot perform the same task in the same
+            workspace. Weused this approach to collect human demonstrations androbot trajectories in diverse spaces such
+            as kitchens, livingrooms, and offices.
+          <div class="publication-video">
+            <video id="dataset" autoplay controls muted loop playsinline height="80%">
+              <source src="./static/videos/dataset_creation.m4v" type="video/mp4">
+            </video>
+          </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Failure Analysis</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            Vid2Robot is not perfect and has its limitations.
+            Here are some failure cases where Vid2Robot fails to perform the task as shown in the prompt video.
+            Some common failures cases are of self-occlusion, grasping errors, incorrect object identification, or
+            ambiguous task shown in the prompt video.
+            <br>
+            The prompt video is in blue frame and unsuccessful rollout is in red frame below.
+          </p>
+
+          <div class="publication-video">
+            <video id="failures" autoplay controls muted loop playsinline height="80%">
+              <source src="./static/videos/failures.m4v" type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="column has-text-centered">
+        <br>
+        <h4 class="title is-5">Human Failure Cases</h4>
+        <div id="results-carousel" class="carousel results-carousel">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_1_human_3p_observe_human_knock_water_bottle_over-m2r_tccmoreframes_fc_Tue Jan 30 12_27_53 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Knock water bottle over
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_19_human_3p_observe_human_place_coke_can_upright-m2r_tccmoreframes_fc_Tue Jan 30 13_14_10 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place coke can upright
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_9_human_3p_observe_human_move_green_jalapeno_chip_bag_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 10_17_13 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move green jalapeno chip bag near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_1_human_3p_observe_human_knock_water_bottle_over-m2r_tccmoreframes_fc_Tue Jan 30 07_53_40 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Knock water bottle over
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_9_human_3p_observe_human_move_green_jalapeno_chip_bag_near_coke_can-m2r_tccmoreframes_fc_Tue Jan 30 12_59_03 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Move green jalapeno chip bag near coke can
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_3_human_3p_observe_human_knock_water_bottle_over-m2r_tccmoreframes_fc_Mon Jan 29 17_12_02 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Knock water bottle over
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_25_human_3p_observe_human_open_middle_drawer-m2r_tccmoreframes_fc_Tue Jan 30 14_09_14 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Open middle drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_17_human_3p_observe_human_place_coke_can_upright-m2r_tccmoreframes_fc_Tue Jan 30 14_49_32 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place coke can upright
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_3_human_3p_observe_human_knock_water_bottle_over-m2r_tccmoreframes_fc_Tue Jan 30 12_31_57 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Knock water bottle over
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/human/rollout_with_ref_17_human_3p_observe_human_place_coke_can_upright-m2r_tccmoreframes_fc_Tue Jan 30 13_10_41 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place coke can upright
+            </div>
+          </div>
+
+        </div>
+        <br>
+        <h4 class="title is-5">Robot Failure Cases</h4>
+        <div id="results-carousel" class="carousel results-carousel">
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/robot/rollout_with_ref_35_phase4_place_apple_into_top_drawer-m2r_tccmoreframes_fc_Thu Feb  1 15_24_43 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place apple into top drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/robot/rollout_with_ref_0_phase4_grab_a_scooper-m2r_tccmoreframes_fc_Tue Feb  6 15_49_17 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Grab a scooper
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/robot/rollout_with_ref_33_phase4_place_apple_into_top_drawer-m2r_tccmoreframes_fc_Thu Feb  1 15_17_36 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place apple into top drawer
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/robot/rollout_with_ref_0_phase4_open_middle_drawer_pick_brown_chip_bag_from_middle_drawer_and_place_on_counter-m2r_tccmoreframes_fc_Tue Feb  6 14_04_13 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Open middle drawer pick brown chip bag from middle drawer and place on counter
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/robot/rollout_with_ref_21_phase4_pick_coke_can_from_bottom_drawer_and_place_on_counter-m2r_tccmoreframes_fc_Thu Feb  1 11_30_53 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Pick coke can from bottom drawer and place on counter
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/robot/rollout_with_ref_0_phase4_place_coke_can_upright-m2r_tccmoreframes_fc_Sun Jan 28 18_58_18 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place coke can upright
+            </div>
+          </div>
+
+          <div class="item">
+            <video class="carousel-item" id="matting-video" autoplay controls muted loop playsinline height="100%">
+              <source
+                src="./static/videos/failures/robot/rollout_with_ref_19_phase4_place_coke_can_upright-m2r_tccmoreframes_fc_Thu Feb  1 11_13_04 2024.mp4"
+                type="video/mp4">
+            </video>
+            <div class="video-caption">
+              Place coke can upright
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section> -->
+
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h5 class="title is-5">BibTeX</h5>
       <pre><code>@misc{jain2024vid2robot,
-  author    = {Jain, Vidhi and Attarian, Maria and Joshi, Nikhil J and Wahid, Ayzaan and Driess, Danny and Vuong, Quan and Sanketi, Pannag R and Sermanet, Pierre and Welker, Stefan and Chan, Christine and Gilitschenski, Igor and Bisk, Yonatan and Dwibedi, Debidatta},
-  title     = {Vid2Robot: End-to-end Video-conditioned Policy Learning with Cross-Attention Transformers},
-  year      = {2024},
-}</code></pre>
+        title={Vid2Robot: End-to-end Video-conditioned Policy Learning with Cross-Attention Transformers}, 
+        author={Vidhi Jain and Maria Attarian and Nikhil J Joshi and Ayzaan Wahid and Danny Driess and Quan Vuong and Pannag R Sanketi and Pierre Sermanet and Stefan Welker and Christine Chan and Igor Gilitschenski and Yonatan Bisk and Debidatta Dwibedi},
+        year={2024},
+        eprint={2403.12943},
+        archivePrefix={arXiv},
+        primaryClass={cs.RO}
+  }</code></pre>
     </div>
   </section>
 
@@ -1073,8 +1347,9 @@
       <div class="columns is-centered">
         <div class="column is-four-fifths">
           <p class="has-text-centered">
-            For any questions, contact <a href="mailto:vidhij@andrew.cmu.edu">Vidhi Jain</a> and <a href="mailto:debidatta@google.com">Debidatta Dwibedi</a>.
-          This template was inspired from <a href="nerfies.github.io">here</a>.
+            For any questions, contact <a href="mailto:vidhij@andrew.cmu.edu">Vidhi Jain</a> and <a
+              href="mailto:debidatta@google.com">Debidatta Dwibedi</a>.
+            This template was inspired from <a href="nerfies.github.io">here</a>.
           </p>
         </div>
       </div>
